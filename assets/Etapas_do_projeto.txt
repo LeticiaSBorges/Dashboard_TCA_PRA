@@ -1,0 +1,6 @@
+Etapas do projeto:
+Bibliotecas OK
+Dataset OK
+Mapa OK
+Layout
+Intertividade
