@@ -11,4 +11,11 @@ import numpy as np
 import pandas as pd
 import json
 
+para_reg = json.load(open("Arquivos_geojson/REGIOES_INTEGRACAO.geojson", "r", encoding='utf-8'))
+#para_reg.keys()
+#type(para_reg["features"][0])
+#para_reg["features"][0].keys()
+#para_reg["features"][0]['properties']
+
+
 
