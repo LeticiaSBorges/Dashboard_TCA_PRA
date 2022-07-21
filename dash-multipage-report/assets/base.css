@@ -23,7 +23,7 @@ body {
 	  border-radius: 5px;
 	  background: white;
 	  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
-    font-size:1.2em; /*Acrescentei*/
+    /*font-size:1.2em;*/ /*Acrescentei*/
     /*text-align: justify;*/
  }
  .subpage {
@@ -32,6 +32,16 @@ body {
 	  height: 257mm;
 	  outline: 2cm whitesmoke solid;
     
+ }
+
+ .resumo{
+    font-size: 1.1em; /*Acrescentei*/
+    text-align: justify;
+ }
+
+ .fonte{
+  font-size:1.2em; /*Acrescentei*/
+  text-align: justify;
  }
  
  .page-1a {
