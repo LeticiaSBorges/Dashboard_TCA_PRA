@@ -12,30 +12,9 @@ import lorem
 import pathlib
 import openpyxl
 
-# Path
-BASE_PATH = pathlib.Path(__file__).parent.resolve()
-DATA_PATH = BASE_PATH.joinpath("Data").resolve()
-
-## Read in data
-#supplyDemand = pd.read_csv(DATA_PATH.joinpath("supplyDemand.csv"))
-#actualSeasonal = pd.read_csv(DATA_PATH.joinpath("actualSeasonal.csv"))
-#industrailProd = pd.read_csv(DATA_PATH.joinpath("industrailProd.csv"))
-#globalMarket = pd.read_csv(DATA_PATH.joinpath("globalMarket.csv"))
-#oecdCommersial = pd.read_csv(DATA_PATH.joinpath("oecdCommersial.csv"))
-#wtiPrices = pd.read_csv(DATA_PATH.joinpath("wtiPrices.csv"))
-#epxEquity = pd.read_csv(DATA_PATH.joinpath("epxEquity.csv"))
-#chinaSpr = pd.read_csv(DATA_PATH.joinpath("chinaSpr.csv"))
-#oecdIndustry = pd.read_csv(DATA_PATH.joinpath("oecdIndustry.csv"))
-#wtiOilprices = pd.read_csv(DATA_PATH.joinpath("wtiOilprices.csv"))
-#productionCost = pd.read_csv(DATA_PATH.joinpath("productionCost.csv"))
-#production2015 = pd.read_csv(DATA_PATH.joinpath("production2015.csv"))
-#energyShare = pd.read_csv(DATA_PATH.joinpath("energyShare.csv"))
-#adjustedSales = pd.read_csv(DATA_PATH.joinpath("adjustedSales.csv"))
-#growthGdp = pd.read_csv(DATA_PATH.joinpath("growthGdp.csv"))
-
-
-with open("C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson", encoding='utf-8') as regiao_integracao:
-    dados_geo = json.load(regiao_integracao)
+##Mapa
+with open("C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
+          encoding='utf-8') as regiao_integracao:dados_geo = json.load(regiao_integracao)
 
 dados_df = pd.read_excel('C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.xlsx')
 
@@ -54,6 +33,20 @@ fig_map.update_layout(title_text='Figura 1 - Regiões de Integração no Estado 
 fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
+##Tabela
+name_col = ["Região de Integração", 'Área do Imóvel', 'Área a Recompor em RL', 'Área a Recompor em APP']
+table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\Dados\\Dados_TCA.xlsx")
+table_fig = go.Figure(data=[go.Table(
+    header=dict(values=list(name_col),
+                fill_color='#003399',
+                align=['left', 'center'],
+                font=dict(color='white', size=12),
+                height=40),
+    cells=dict(values=[table_df.RegInt, table_df.AreaImovel, table_df.AR_RL, table_df.AR_APP],
+               fill_color='lavender',
+               align=['left', 'center'], font=dict(color='black', size=11))
+)])
+table_fig.update_layout(width=720, height=500)
 
 # Colours
 color_1 = "#003399" ##Azul escuro
@@ -325,9 +318,7 @@ app.layout = html.Div(
                         ),
                         html.Div(
                             [
-                                dcc.Graph(
-                                    figure=fig_map
-                                )
+                                dcc.Graph(figure=fig_map)
                             ],
                         ),
                     ],
@@ -336,6 +327,45 @@ app.layout = html.Div(
             ],
             className="page",
         ), #Fim pagina 3
+        #Pagina 4
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H4("Relatório dos TCA's Âmbito PRA")], className="page-2a"),  # page-2a
+                        html.Div(
+                            [
+                                html.Div(
+                                    [
+                                        html.P(
+                                            "Para realização deste relatório, foram obtidas informações através do banco "
+                                            "de dados da 'Entrada única' inseridas no 'Módulo Relatório', pertencentes no "
+                                            "sistema da SEMAS/PA, este banco de dados contém todos os recibos eletrónicos "
+                                            "dos imóveis rurais com Cadastros Ambientais Rurais - CAR aprovados e Termos de "
+                                            "Compromissos - TCAs Executados no Pará. A planilha com os dados dos TCAs "
+                                            "eletrônicos foram obtidas através do CATIS n° 2022033062, já a dos TCAs "
+                                            "manuais foram obtidas através do PAE n° 264720/2022 juntamente a Gerência de "
+                                            "Adequação Ambiental Rural (GEAR) da SEMAS/PA. Para análise dos dados obtidos "
+                                            "até 31 de março de 2022, foi utilizado o Excel como ferramenta de filtro para "
+                                            "extrair as informações necessárias por regiões de integração do Estado do Pará "
+                                            "em cada recibo de CAR (Figura 1).", className="page-2b"),
+                                    ],
+                                    className="page-3",
+                                ),
+                                html.Div(
+                                    [
+                                        dcc.Graph(figure=table_fig)
+                                    ],
+                                ),
+                            ], className="fonte",
+                        ),
+
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ),#Fim page 4
     ]
 )
 
