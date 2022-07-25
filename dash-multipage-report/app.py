@@ -46,7 +46,9 @@ table_fig = go.Figure(data=[go.Table(
                fill_color='lavender',
                align=['left', 'center'], font=dict(color='black', size=11))
 )])
-table_fig.update_layout(width=720, height=500)
+table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', title_x=0.15,
+                        width=620, height=400,
+                        margin={"r":0,"l":117,"b":0, "t":30})
 
 # Colours
 color_1 = "#003399" ##Azul escuro
@@ -338,24 +340,31 @@ app.layout = html.Div(
                                 html.Div(
                                     [
                                         html.P(
-                                            "Para realização deste relatório, foram obtidas informações através do banco "
-                                            "de dados da 'Entrada única' inseridas no 'Módulo Relatório', pertencentes no "
-                                            "sistema da SEMAS/PA, este banco de dados contém todos os recibos eletrónicos "
-                                            "dos imóveis rurais com Cadastros Ambientais Rurais - CAR aprovados e Termos de "
-                                            "Compromissos - TCAs Executados no Pará. A planilha com os dados dos TCAs "
-                                            "eletrônicos foram obtidas através do CATIS n° 2022033062, já a dos TCAs "
-                                            "manuais foram obtidas através do PAE n° 264720/2022 juntamente a Gerência de "
-                                            "Adequação Ambiental Rural (GEAR) da SEMAS/PA. Para análise dos dados obtidos "
-                                            "até 31 de março de 2022, foi utilizado o Excel como ferramenta de filtro para "
-                                            "extrair as informações necessárias por regiões de integração do Estado do Pará "
-                                            "em cada recibo de CAR (Figura 1).", className="page-2b"),
+                                            "Após a filtragem dos dados dos imóveis rurais, foi realizado o levantamento "
+                                            "de imóveis com licenciamento a partir do CPF/CNPJ do proprietário do "
+                                            "imóvel no SIMLAM/PA, e por fim foi possível elaborar gráficos a partir: "
+                                            "dos TCAs executados, das áreas de RL a recompor, de APP a recompor dos "
+                                            "imóveis rurais por Região de Integração e dos imóveis com licenciamento no "
+                                            "âmbito do Programa de Regularização Ambiental - PRA.", className="page-2b"),
+                                        html.H3("Resultados", className="page-2b"),
+                                        html.P(
+                                            "A partir dos dados obtidos, identificou-se que 364 imóveis rurais possuem "
+                                            "Termos de Compromisso Ambiental- TCAs em execução, correspondendo a uma "
+                                            "área total de 744.111,2829 ha, nos quais 10.787,3665 ha estão em processo "
+                                            "de recomposição, conforme metodologia e cronograma descritos nos projetos "
+                                            "de recomposição de área degradadas e alteradas. Do total de áreas a "
+                                            "recompor 8.086,7996 ha são de área de Reserva Legal (RL) a recompor, e "
+                                            "2.700,5669 ha são de Área de Preservação Permanente (APP) a recompor. "
+                                            "Identificou-se ainda que dos 364 imóveis com TCAs assinados, 280 (77%) "
+                                            "possuem processos de licenciamento ambiental formalizados na SEMAS (Tabela 1).",
+                                            className="page-2b"),
                                     ],
                                     className="page-3",
                                 ),
                                 html.Div(
                                     [
                                         dcc.Graph(figure=table_fig)
-                                    ],
+                                    ], className="marge-table-1"
                                 ),
                             ], className="fonte",
                         ),
