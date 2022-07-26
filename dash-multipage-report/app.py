@@ -445,7 +445,7 @@ app.layout = html.Div(
                                                "execução foi a de Rio Capim, com 21 imóveis. No decorrer dos anos houve um "
                                                "aumento de imóveis rurais com TCAs em execução, crescendo de 5 imóveis em 2018 "
                                                "para 168 em 2021, ressalta-se que no ano de 2022, até o mês de março, houve "
-                                               "registro de 54 imóveis.",
+                                               "registro de 54 imóveis (Figura 3).",
                                                className="page-2b"),
                                     ],
                                     className="page-3",
