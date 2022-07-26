@@ -12,11 +12,12 @@ import lorem
 import pathlib
 import openpyxl
 
-##Mapa
+##################################################### Mapa #############################################################
 with open("C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
           encoding='utf-8') as regiao_integracao:dados_geo = json.load(regiao_integracao)
 
-dados_df = pd.read_excel('C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.xlsx')
+dados_df = pd.read_excel('C:\\Users\\letic\\Documents\GitHub\\Dashboard_TCA_PRA\\assets\\Arquivos_geojson\\'
+                         'REGIOES_INTEGRACAO.xlsx')
 
 ## Color map
 regInt_Color = ['#008080', '#008B8B', '#20B2AA', '#48D1CC', '#40E0D0', '#00CED1',
@@ -33,7 +34,7 @@ fig_map.update_layout(title_text='Figura 1 - Regiões de Integração no Estado 
 fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
-##Tabela
+################################################### Tabela #############################################################
 name_col = ["Região de Integração", 'Área do Imóvel', 'Área a Recompor em RL', 'Área a Recompor em APP']
 table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\Dados\\Dados_TCA.xlsx")
 table_fig = go.Figure(data=[go.Table(
@@ -50,8 +51,10 @@ table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', tit
                         width=620, height=400,
                         margin={"r":0,"l":117,"b":0, "t":30})
 
+################################################# Graficos #############################################################
 #Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
-data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\\Geral\\tab_dinamica_TCA.xlsx')
+data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\\Geral\\'
+                             'tab_dinamica_TCA.xlsx')
 
 regInt = data_tab_din['Região de Integração']
 nTCA = data_tab_din['TCA']
@@ -71,7 +74,6 @@ graf_1.add_trace(go.Bar(
     marker_color='#363636'
 ))
 
-# Here we modify the tickangle of the xaxis, resulting in rotated labels.
 graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
                     width=725, height=400,
                     title = "Figura 2 - Número de imóveis rurais com TCAs em execução e com licenciamento.",
@@ -86,6 +88,14 @@ graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
                         ),
                     margin={"r":50,"l":100,"b":100, "t":30})
 
+data_ano = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\Geral\\"
+                         "Ano_Termo_Comp_TCA.xlsx")
+data_ano.rename(columns={'Ano_Termo_Compromisso': 'Ano do Termo de Compromisso'}, inplace = True)
+data_ano.rename(columns={0: 'Quantidade'}, inplace = True)
+graf_2 = px.bar(data_ano, x='Ano do Termo de Compromisso', y='Quantidade', text_auto=True)
+
+
+##################################################### Dash #############################################################
 # Colours
 color_1 = "#003399" ##Azul escuro
 color_2 = "#00ffff" ##Azul claro
@@ -457,12 +467,17 @@ app.layout = html.Div(
             ],
             className="page",
         ), #Fim pagina 5
-#Pagina 6
+        #Pagina 6
         html.Div(
             [
                 html.Div(
                     [
                         html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ),
+                        html.Div(
+                            [
+                                dcc.Graph(figure=graf_2)
+                            ],
+                        ),
                         html.Div(
                             [
                                 html.Div(
@@ -479,11 +494,6 @@ app.layout = html.Div(
                                     className="page-3",
                                 ),
                             ], className="fonte",
-                        ),
-                        html.Div(
-                            [
-                                dcc.Graph(figure=graf_1)
-                            ],
                         ),
                     ], className="subpage",
                 )
