@@ -73,6 +73,7 @@ graf_1.add_trace(go.Bar(
 
 # Here we modify the tickangle of the xaxis, resulting in rotated labels.
 graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
+                    width=620, height=400,
                     title = "Figura 2 - Número de imóveis rurais com TCAs em execução e com licenciamento.",
                     title_x=0.5, title_y=0.01,
                     #legend_orientation = "h",
@@ -82,7 +83,8 @@ graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
                             #bgcolor='rgba(255, 255, 255, 0)',
                             #bordercolor='rgba(255, 255, 255, 0)'
                         ),
-                    margin={"r":0,"l":0,"b":100, "t":30})
+                    margin={"r":0,"l":150,"b":100, "t":30})
+graf_1.update_traces(textfont_size=5)
 
 # Colours
 color_1 = "#003399" ##Azul escuro
@@ -421,7 +423,7 @@ app.layout = html.Div(
                                     [
                                         html.P("Em relação a estes 364 imóveis rurais que estão com TCA em execução, "
                                                "280 requisitaram o licenciamento de suas atividades, sendo a região do "
-                                               "Xingu correspondendo a 34,6% do total, com 97 dos 115 imóveis .",
+                                               "Xingu correspondendo a 34,6% do total, com 97 dos 115 imóveis.",
                                                className="page-2b"),
                                     ],
                                     className="page-3",
@@ -434,11 +436,43 @@ app.layout = html.Div(
                             ],
                         ),
                     ],
-                    className="subpage",
                 )
             ],
             className="page",
-        ), #Fim pagina 3
+        ), #Fim pagina 5
+        #Pagina 6
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                        html.Div(
+                            [
+                                html.Div(
+                                    [
+                                        html.P("A região do Xingu registrou, nos anos de 2018, 2019, 2021 e 2022, o maior "
+                                               "número de imóveis com TCA em execução sendo 5, 26, 53 e 14 imóveis, "
+                                               "respectivamente. Já em 2020, a região com maior número de imóveis com TCA em "
+                                               "execução foi a de Rio Capim, com 21 imóveis. No decorrer dos anos houve um "
+                                               "aumento de imóveis rurais com TCAs em execução, crescendo de 5 imóveis em 2018 "
+                                               "para 168 em 2021, ressalta-se que no ano de 2022, até o mês de março, houve "
+                                               "registro de 54 imóveis.",
+                                               className="page-2b"),
+                                    ],
+                                    className="page-3",
+                                ),
+                            ], className="fonte",
+                        ),
+                        html.Div(
+                            [
+                                dcc.Graph(figure=graf_1)
+                            ],
+                        ),
+                    ],
+                )
+            ],
+            className="page",
+        ), #Fim pagina 6
     ]
 )
 
