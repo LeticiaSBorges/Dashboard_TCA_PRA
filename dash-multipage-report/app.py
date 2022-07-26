@@ -29,7 +29,7 @@ fig_map = px.choropleth(dados_df, geojson=dados_geo, color="Regiões de Integra�
                     #title='Figura 1 - Regiões de Integração no Estado do Pará',
                     height=400, width=700
                    )
-fig_map.update_layout(title_text='Figura 1 - Regiões de Integração no Estado do Pará, Brasil', title_x=0.5, title_y=0.01)
+fig_map.update_layout(title_text='Figura 1 - Regiões de Integração no Estado do Pará, Brasil.', title_x=0.5, title_y=0.01)
 fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
@@ -49,6 +49,40 @@ table_fig = go.Figure(data=[go.Table(
 table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', title_x=0.15,
                         width=620, height=400,
                         margin={"r":0,"l":117,"b":0, "t":30})
+
+#Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
+data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\\Geral\\tab_dinamica_TCA.xlsx')
+
+regInt = data_tab_din['Região de Integração']
+nTCA = data_tab_din['TCA']
+nLic = data_tab_din['n° de Imovéis com Licencimento']
+
+graf_1 = go.Figure()
+graf_1.add_trace(go.Bar(
+    x=regInt,
+    y=nTCA,
+    name='TCA',
+    marker_color='#191970'
+))
+graf_1.add_trace(go.Bar(
+    x=regInt,
+    y=nLic,
+    name='Nº de imóveis com licenciamento',
+    marker_color='#363636'
+))
+
+# Here we modify the tickangle of the xaxis, resulting in rotated labels.
+graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
+                    title = "Figura 2 - Número de imóveis rurais com TCAs em execução e com licenciamento.",
+                    title_x=0.5, title_y=0.01,
+                    #legend_orientation = "h",
+                    legend=dict(
+                            x=0,
+                            y=1.0,
+                            #bgcolor='rgba(255, 255, 255, 0)',
+                            #bordercolor='rgba(255, 255, 255, 0)'
+                        ),
+                    margin={"r":0,"l":0,"b":100, "t":30})
 
 # Colours
 color_1 = "#003399" ##Azul escuro
@@ -234,12 +268,12 @@ app.layout = html.Div(
             [
                 html.Div(
                     [
-                        html.Div([html.H4("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
                             html.Div(
                                 [
                                     html.Div(
                                         [
-                                            html.H3("Introdução", className="page-2b"),
+                                            html.H4("Introdução", className="page-2b"),
                                             html.P(
                                                 "Diante dos desafios globais para garantir o combate das mudanças do clima e "
                                                 "monitoramento quanto ao uso e ocupação do solo, o Programa de Regularização "
@@ -296,12 +330,12 @@ app.layout = html.Div(
             [
                 html.Div(
                     [
-                        html.Div([html.H4("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
                         html.Div(
                             [
                                 html.Div(
                                     [
-                                        html.H3("Metodologia", className="page-2b"),
+                                        html.H4("Metodologia", className="page-2b"),
                                         html.P("Para realização deste relatório, foram obtidas informações através do banco "
                                                "de dados da 'Entrada única' inseridas no 'Módulo Relatório', pertencentes no "
                                                "sistema da SEMAS/PA, este banco de dados contém todos os recibos eletrónicos "
@@ -334,7 +368,7 @@ app.layout = html.Div(
             [
                 html.Div(
                     [
-                        html.Div([html.H4("Relatório dos TCA's Âmbito PRA")], className="page-2a"),  # page-2a
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a"),  # page-2a
                         html.Div(
                             [
                                 html.Div(
@@ -346,7 +380,7 @@ app.layout = html.Div(
                                             "dos TCAs executados, das áreas de RL a recompor, de APP a recompor dos "
                                             "imóveis rurais por Região de Integração e dos imóveis com licenciamento no "
                                             "âmbito do Programa de Regularização Ambiental - PRA.", className="page-2b"),
-                                        html.H3("Resultados", className="page-2b"),
+                                        html.H4("Resultados", className="page-2b"),
                                         html.P(
                                             "A partir dos dados obtidos, identificou-se que 364 imóveis rurais possuem "
                                             "Termos de Compromisso Ambiental- TCAs em execução, correspondendo a uma "
@@ -374,7 +408,37 @@ app.layout = html.Div(
                 )
             ],
             className="page",
-        ),#Fim page 4
+        ),#Fim pagina 4
+        #Pagina 5
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                        html.Div(
+                            [
+                                html.Div(
+                                    [
+                                        html.P("Em relação a estes 364 imóveis rurais que estão com TCA em execução, "
+                                               "280 requisitaram o licenciamento de suas atividades, sendo a região do "
+                                               "Xingu correspondendo a 34,6% do total, com 97 dos 115 imóveis .",
+                                               className="page-2b"),
+                                    ],
+                                    className="page-3",
+                                ),
+                            ], className="fonte",
+                        ),
+                        html.Div(
+                            [
+                                dcc.Graph(figure=graf_1)
+                            ],
+                        ),
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim pagina 3
     ]
 )
 
