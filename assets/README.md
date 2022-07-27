@@ -8,5 +8,7 @@ Para a criação do relatório em modelo relatório foi realizado no software py
 A principal ideal do projeto era reproduzir o mais simular possivel com o original, contudo algumas alterações foram realizadas, como layout do relatório, cores e modelos dos gráficos. Houve alteração nos dados do momento da criação do relatório original até a elaboração deste, tendo alterado algumas informações, porém mantendo o texto original dos autores.
 
 O projeto final dessa manenira:
+<p align="center">
+  <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/d697fa07a62c490c8c278f29d6230d01e47b0df5/dash-multipage-report/assets/brasao_para.png" width="350" title="hover text">
+</p>
 
-![stack Overflow](https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/d697fa07a62c490c8c278f29d6230d01e47b0df5/dash-multipage-report/assets/brasao_para.png  width="350")
