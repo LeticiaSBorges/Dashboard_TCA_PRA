@@ -9,4 +9,4 @@ A principal ideal do projeto era reproduzir o mais simular possivel com o origin
 
 O projeto final dessa manenira:
 
-![stack Overflow](https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/d697fa07a62c490c8c278f29d6230d01e47b0df5/dash-multipage-report/assets/brasao_para.png)
+![stack Overflow](https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/d697fa07a62c490c8c278f29d6230d01e47b0df5/dash-multipage-report/assets/brasao_para.png  width="350")
