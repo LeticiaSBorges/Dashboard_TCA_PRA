@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import json
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -52,7 +51,8 @@ table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', tit
                         margin={"r":0,"l":117,"b":0, "t":30})
 
 ################################################# Graficos #############################################################
-#Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
+## Criação do Gráfico 1
+# Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
 data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\\Geral\\'
                              'tab_dinamica_TCA.xlsx')
 
@@ -88,12 +88,19 @@ graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
                         ),
                     margin={"r":50,"l":100,"b":100, "t":30})
 
+## Criação do Gráfico 2
+# Exercução dos TCAs por ano.
 data_ano = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\Geral\\"
                          "Ano_Termo_Comp_TCA.xlsx")
 data_ano.rename(columns={'Ano_Termo_Compromisso': 'Ano do Termo de Compromisso'}, inplace = True)
 data_ano.rename(columns={0: 'Quantidade'}, inplace = True)
 graf_2 = px.bar(data_ano, x='Ano do Termo de Compromisso', y='Quantidade', text_auto=True)
 
+## Criação do Gráfico 3
+#
+
+## Criação do Gráfico 4
+#
 
 ##################################################### Dash #############################################################
 # Colours
