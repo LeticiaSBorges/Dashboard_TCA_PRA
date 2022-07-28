@@ -94,13 +94,56 @@ data_ano = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA
                          "Ano_Termo_Comp_TCA.xlsx")
 data_ano.rename(columns={'Ano_Termo_Compromisso': 'Ano do Termo de Compromisso'}, inplace = True)
 data_ano.rename(columns={0: 'Quantidade'}, inplace = True)
-graf_2 = px.bar(data_ano, x='Ano do Termo de Compromisso', y='Quantidade', text_auto=True)
+graf_2 = px.bar(data_ano, x='Ano do Termo de Compromisso', y='Quantidade', text_auto=True,
+                title = "Figura 3 - Imóveis rurais com TCAs em execução.",
+                width=725, height=300)
+graf_2.update_layout(title_text= "Figura 3 - Imóveis rurais com TCAs em execução.",
+                title_x=0.5, title_y=0.02, margin={"r":50,"l":100,"b":100, "t":20})
 
 ## Criação do Gráfico 3
-#
+#TCAs nas Regiões de Integração no Pará, Brasil
+data_graf_3 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\Geral\\'
+                            'tab_dinamica_TCA.xlsx')
+regInt = data_graf_3['Região de Integração']
+nTCA = data_graf_3['TCA']
+
+graf_3 = px.pie(names = regInt, values = nTCA)
+graf_3.update_layout(#title_text= "Figura 4 - TCAs nas Regiões de Integração no Estado do Pará no Brasil.",
+                    font = {'family': 'Arial','size': 9,'color': 'black'},
+                    title_x=0.5, title_y=0.01, height = 250,
+                     margin={"r":0,"l":0,"b":50 , "t":30})
 
 ## Criação do Gráfico 4
 #
+data_graf_4 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\assets\\Resultados\Geral\\'
+                            'tab_dinamica_TCA.xlsx')
+
+regInt = data_graf_4['Região de Integração']
+nTCA = data_graf_4['TCA']
+nLic = data_graf_4['n° de Imovéis com Licencimento']
+
+graf_4 = go.Figure()
+graf_4.add_trace(go.Bar(
+    x=regInt,
+    y=nTCA,
+    name='TCA',
+    marker_color='#191970'
+))
+graf_4.add_trace(go.Bar(
+    x=regInt,
+    y=nLic,
+    name='Nº de imóveis com licenciamento',
+    marker_color='#363636'
+))
+
+graf_4.update_layout(barmode='group', xaxis_tickangle=90,
+                    #title = "Figura 5 - Imóveis rurais com TCAs em execução por Região de Integração.",
+                    font={'family': 'Arial', 'size': 10, 'color': 'black'},
+                    title_x=0.5, title_y=0.01, height=250,
+                    margin={"r": 0, "l": 0, "b": 50, "t": 30},
+                    legend=dict(x=0, y=1.0)
+                     )
+graf_4.update_traces(textfont_size=8, textangle=1, textposition="outside", cliponaxis=False)
 
 ##################################################### Dash #############################################################
 # Colours
@@ -489,18 +532,58 @@ app.layout = html.Div(
                             [
                                 html.Div(
                                     [
-                                        html.P("A região do Xingu registrou, nos anos de 2018, 2019, 2021 e 2022, o maior "
-                                               "número de imóveis com TCA em execução sendo 5, 26, 53 e 14 imóveis, "
-                                               "respectivamente. Já em 2020, a região com maior número de imóveis com TCA em "
-                                               "execução foi a de Rio Capim, com 21 imóveis. No decorrer dos anos houve um "
-                                               "aumento de imóveis rurais com TCAs em execução, crescendo de 5 imóveis em 2018 "
-                                               "para 168 em 2021, ressalta-se que no ano de 2022, até o mês de março, houve "
-                                               "registro de 54 imóveis.",
+                                        html.P("Neste âmbito, observou-se que as Regiões de Integração que possuem a "
+                                               "maior quantidade de TCAs executados são: Xingu, Rio Capim, Baixo "
+                                               "Amazonas e Tapajós, com 115, 74, 42 e 42 TCAs, respectivamente. As "
+                                               "Regiões com menor quantidade de TCAs executados são: Lago do Tucuruí, "
+                                               "Cuamá e Marajó, com 12, 4 e 1 TCAs (Figura 4 e 5).",
                                                className="page-2b"),
                                     ],
                                     className="page-3",
                                 ),
                             ], className="fonte",
+                        ),
+                        html.Div(
+                            [
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            [
+                                                html.Div(
+                                                    [
+                                                        dcc.Graph(figure=graf_3)
+                                                    ]
+                                                ),
+                                                html.Div(
+                                                    [
+                                                    html.P("Figura 4 - TCAs nas Regiões de Integração no Estado do "
+                                                           "Pará no Brasil.", className="page-2b")
+                                                    ], className="fonte",
+                                                ),
+                                            ],
+                                            className="six columns",
+                                        ),
+                                        html.Div(
+                                            [
+                                                html.Div(
+                                                    [
+                                                        dcc.Graph(figure=graf_4),
+                                                    ],
+                                                ),
+                                                html.Div(
+                                                    [
+                                                    html.P("Figura 5 - Imóveis rurais com TCAs em execução "
+                                                            "por Região de Integração.", className="page-2b")
+                                                    ], className="fonte",
+                                                ),
+                                            ],
+                                            className="six columns",
+                                        ),
+                                    ],
+                                    className="thirdPage first row",
+                                )
+                            ],
+                            className="page-2c",
                         ),
                     ], className="subpage",
                 )
