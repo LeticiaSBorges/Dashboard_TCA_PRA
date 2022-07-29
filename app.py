@@ -12,10 +12,10 @@ import pathlib
 import openpyxl
 
 ##################################################### Mapa #############################################################
-with open("C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
+with open("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
           encoding='utf-8') as regiao_integracao:dados_geo = json.load(regiao_integracao)
 
-dados_df = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Arquivos_geojson\\'
+dados_df = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\'
                          'REGIOES_INTEGRACAO.xlsx')
 
 ## Color map
@@ -35,7 +35,7 @@ fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 ################################################### Tabela #############################################################
 name_col = ["Região de Integração", 'Área do Imóvel', 'Área a Recompor em RL', 'Área a Recompor em APP']
-table_df = pd.read_excel("C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Dados\\Dados_TCA.xlsx")
+table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Dados_TCA.xlsx")
 table_fig = go.Figure(data=[go.Table(
     header=dict(values=list(name_col),
                 fill_color='#003399',
@@ -53,7 +53,7 @@ table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', tit
 ################################################# Graficos #############################################################
 ## Criação do Gráfico 1
 # Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
-data_tab_din = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\Geral\\'
+data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                              'tab_dinamica_TCA.xlsx')
 
 regInt = data_tab_din['Região de Integração']
@@ -90,7 +90,7 @@ graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
 
 ## Criação do Gráfico 2
 # Exercução dos TCAs por ano.
-data_ano = pd.read_excel("C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\Geral\\"
+data_ano = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\"
                          "Ano_Termo_Comp_TCA.xlsx")
 data_ano.rename(columns={'Ano_Termo_Compromisso': 'Ano do Termo de Compromisso'}, inplace = True)
 data_ano.rename(columns={0: 'Quantidade'}, inplace = True)
@@ -102,7 +102,7 @@ graf_2.update_layout(title_text= "Figura 3 - Imóveis rurais com TCAs em execuç
 
 ## Criação do Gráfico 3
 #TCAs nas Regiões de Integração no Pará, Brasil
-data_graf_3 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\Geral\\'
+data_graf_3 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                             'tab_dinamica_TCA.xlsx')
 regInt = data_graf_3['Região de Integração']
 nTCA = data_graf_3['TCA']
@@ -115,7 +115,7 @@ graf_3.update_layout(#title_text= "Figura 4 - TCAs nas Regiões de Integração 
 
 ## Criação do Gráfico 4
 #
-data_graf_4 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\Geral\\'
+data_graf_4 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                             'tab_dinamica_TCA.xlsx')
 
 regInt = data_graf_4['Região de Integração']
@@ -148,7 +148,7 @@ graf_4.update_traces(textfont_size=8, textangle=1, textposition="outside", clipo
 #############################
 ## Graficos Baixo Amazonas
 
-data_graf_5 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\Baixo_Amazonas\\'
+data_graf_5 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
                      'tab_dinamica_BAmaz.xlsx')
 
 regInt = data_graf_5['MUNICIPIO']
@@ -176,7 +176,7 @@ graf_5.update_layout(barmode='group', xaxis_tickangle=-35,
                     legend=dict(x=0, y=1.0)
                   )
 
-data_graf_6 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\Baixo_Amazonas\\'
+data_graf_6 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
                             'Ano_Termo_Comp_BAmaz.xlsx', engine='openpyxl')
 data_graf_6.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -195,7 +195,7 @@ graf_6.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Rio Capim
-data_graf_7 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\RIO_CAPIM\\tab_dinamica_RCapim.xlsx')
+data_graf_7 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\tab_dinamica_RCapim.xlsx')
 regInt = data_graf_7['MUNICIPIO']
 nTCA = data_graf_7['TCA']
 nLic = data_graf_7['n° de Imovéis com Licencimento']
@@ -220,7 +220,7 @@ graf_7.update_layout(barmode='group', xaxis_tickangle=-35,
                 margin = {"r": 0, "l": 0, "b": 0, "t": 20},
                 legend = dict(x=0, y=1.0))
 
-data_graf_8 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\RIO_CAPIM\\'
+data_graf_8 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\'
                             'Ano_Termo_Comp_RCapim.xlsx', engine='openpyxl')
 data_graf_8.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -237,7 +237,7 @@ graf_8.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Tapajós
-data_graf_9 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\TAPAJÓS\\tab_dinamica_tapajos.xlsx')
+data_graf_9 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\tab_dinamica_tapajos.xlsx')
 regInt = data_graf_9['MUNICIPIO']
 nTCA = data_graf_9['TCA']
 nLic = data_graf_9['n° de Imovéis com Licencimento']
@@ -263,7 +263,7 @@ graf_9.update_layout(barmode='group', xaxis_tickangle=0,
                 legend = dict(x=0, y=1.0))
 
 
-data_graf_10 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\TAPAJÓS\\'
+data_graf_10 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\'
                             'Ano_Termo_Comp_tapajos.xlsx', engine='openpyxl')
 data_graf_10.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -279,7 +279,7 @@ graf_10.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Xingu
-data_graf_11 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\XINGU\\tab_dinamica_xingu.xlsx')
+data_graf_11 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\tab_dinamica_xingu.xlsx')
 regInt = data_graf_11['MUNICIPIO']
 nTCA = data_graf_11['TCA']
 nLic = data_graf_11['n° de Imovéis com Licencimento']
@@ -305,7 +305,7 @@ graf_11.update_layout(barmode='group', xaxis_tickangle=-35,
                 legend = dict(x=0, y=1.0))
 
 
-data_graf_12 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dash\\assets\\Resultados\\XINGU\\'
+data_graf_12 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\'
                             'Ano_Termo_Comp_xingu.xlsx', engine='openpyxl')
 data_graf_12.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
