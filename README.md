@@ -9,6 +9,6 @@ A principal ideal do projeto era reproduzir o mais simular possivel com o origin
 
 O projeto final dessa manenira:
 <p align="center">
-  <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/d697fa07a62c490c8c278f29d6230d01e47b0df5/dash-multipage-report/assets/brasao_para.png" width="350" title="hover text">
+  <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/c552902bc67f668d130f84e57b53255c3298acd7/Img/folha-1.PNG" width="350" title="hover text">
 </p>
 
