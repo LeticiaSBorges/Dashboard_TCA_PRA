@@ -11,4 +11,9 @@ O projeto final dessa manenira:
 <p align="center">
   <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/c552902bc67f668d130f84e57b53255c3298acd7/Img/folha-1.PNG" width="350" title="hover text">
 </p>
-
+<p align="center">
+  <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/6af6261acac44cce68399ec197a88ee131cfcd98/Img/folha-2.PNG" width="350" title="hover text">
+</p>
+<p align="center">
+  <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/6af6261acac44cce68399ec197a88ee131cfcd98/Img/folha-3.PNG" width="350" title="hover text">
+</p>
