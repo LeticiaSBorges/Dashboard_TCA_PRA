@@ -1214,8 +1214,28 @@ app.layout = html.Div(
                                                             "regularização ambiental, bem como ao fomento às atividades "
                                                             "sustentáveis, terão prioridade no processo de regularização"
                                                             " ambiental, no âmbito do PRA.")
-                                                )
-
+                                                ),
+                                                html.H4("Conclusão", className="page-2b"),
+                                                html.P(
+                                                    "O presente Relatório objetivou apresentar uma síntese dos "
+                                                    "resultados do Programa de Regularização Ambiental (PRA) "
+                                                    "efetivados com a assinatura do Termo de Compromisso Ambiental "
+                                                    "(TCA) por parte do proprietário ou possuidor do imóvel rural se "
+                                                    "comprometendo com o Projeto de Recomposição de Áreas Degradadas e "
+                                                    "Alteradas (PRADA), visando regularizar seu passivos ambiental nas "
+                                                    "Áreas de Reserva Legal, Áreas de Preservação Permanente e Áreas de "
+                                                    "Uso Restrito identificadas por meio da Cadastro Ambiental Rural "
+                                                    "(CAR), neste âmbito, da área total dos imóveis rurais com TCAs "
+                                                    "firmados, 1,4% corresponde a área de passivo ambiental."
+                                                    , className="page-2b"),
+                                                html.P(
+                                                    "O fortalecimento da gestão ambiental no Pará com o Programa "
+                                                    "Regulariza Pará a partir da análise da inscrição dos imóveis "
+                                                    "rurais no CAR, na situação cadastral "
+                                                    "'analisado, aguardando regularização ambiental (Lei nº 12.651/2012)' do Sistema de "
+                                                    "Cadastro Ambiental Rural do Pará - SICAR/PA, foram fatores que "
+                                                    "contribuíram o crescimento do número de TCAs firmados no âmbito "
+                                                    "do PRA, entre os anos de 2018 a 2021.", className="page-2b"),
                                             ],
                                             className="page-3",
                                         ),
@@ -1231,6 +1251,57 @@ app.layout = html.Div(
             ],
             className="page",
         ), #Fim Pagina 14
+        #Página 15
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a"),  # page-2a
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            [
+                                                html.P(
+                                                    "O aumento no número de utilizações do instrumento no decorrer dos "
+                                                    "anos, que saltou do total de 5 no ano de 2018 para 168 no ano de "
+                                                    "2021, fazendo o recorte para os meses de janeiro a março de 2018 "
+                                                    "a 2022, registrou-se de 0 em 2018 a 54 em 2022, para os primeiros "
+                                                    "meses do ano. Atualmente, 77% dos imóveis rurais com TCA "
+                                                    "executado são imóveis que passaram pelo licenciamento, do total "
+                                                    "de TCA executados, 21 são atribuídos aos Núcleos Regionais de "
+                                                    "Regularidade Ambiental (NUREs).", className="page-2b"),
+
+                                                html.P(
+                                                    "Ressalta-se que a municipalização da análise e validação do CAR, "
+                                                    "descentralizou esta política através de capacitação dos municípios "
+                                                    "para habilita-lo a exercer esta função. O estimulo a adesão ao "
+                                                    "PRA seguindo o fluxo do processo de regularização é efetivada a "
+                                                    "partir do pagamento e incentivo pelos serviços ambientais "
+                                                    "realizados, como: oportunidade de suspensão de multas ambientais "
+                                                    "através do compromisso de regularizar as áreas desmatadas, "
+                                                    "promover o acesso a crédito rural e demais programas oficiais de "
+                                                    "incentivo à produção, comprovação de que está cumprindo com a "
+                                                    "regularização ambiental, e segurança jurídica para a atividade "
+                                                    "produtiva.", className="page-2b"),
+
+                                            ],
+                                            className="page-3",
+                                        ),
+                                    ],
+                                    className="fonte",
+                                ),
+                            ],
+                            className="subpage",
+                        )
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 15
+        
     ]
 )
 
