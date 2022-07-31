@@ -1077,7 +1077,7 @@ app.layout = html.Div(
                                                             "de suas modalidades, para proprietários de imóveis rurais "
                                                             "que estejam  inscritos no CAR.")
                                                 ]
-                                            , className="page-2b"
+                                                , className="page-2b"
                                             ),
                                             html.H6("DECRETO Nº 1.379, DE 3 SETEMBRO DE 2015", className="page-2b"),
                                             html.Ul(
@@ -1090,7 +1090,7 @@ app.layout = html.Div(
                                                             "cumprimento do PRA, pelo Governo do Estado do Pará"),
 
                                                 ]
-                                            , className="page-2b"
+                                                , className="page-2b"
                                             )
                                         ],
                                         className="page-3",
@@ -1158,7 +1158,7 @@ app.layout = html.Div(
                                                             "Lei Federal nº 12.651, de 2012 e conforme disposto no "
                                                             "art. 3º da Lei Federal nº 11.326, de 24 de julho de 2006."),
                                                 ]
-                                            , className="page-2b"
+                                                , className="page-2b"
                                             ),
                                             html.H6("INSTRUÇÃO NORMATIVA Nº 01, DE 08 DE OUTUBRO DE 2020", className="page-2b"),
                                             html.Ul(
@@ -1174,13 +1174,8 @@ app.layout = html.Div(
                                                             "aplicáveis ao PRA, incluindo a não obrigatoriedade de "
                                                             "apresentação de ART."),
                                                 ]
-                                            , className="page-2b"
+                                                , className="page-2b"
                                             ),
-                                            html.P("Parágrafo único. Aplica-se o tratamento disposto no caput deste "
-                                                   "artigo, aos proprietários e possuidores de imóveis rurais com área "
-                                                   "até 4 (quatro) módulos fiscais que desenvolvam atividades "
-                                                   "agrossilvipastoris, bem como aos povos e comunidades tradicionais "
-                                                   "que façam uso coletivo do seu território.", className="page-3")
                                         ],
                                         className="page-3",
                                     ),
@@ -1193,6 +1188,49 @@ app.layout = html.Div(
             ],
             className="page",
         ), #Fim Pagina 13
+        #Página 14
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a"),  # page-2a
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            [
+                                                html.P(
+                                                    "Parágrafo único. Aplica-se o tratamento disposto no caput deste "
+                                                    "artigo, aos proprietários e possuidores de imóveis rurais com "
+                                                    "área até 4 (quatro) módulos fiscais que desenvolvam atividades "
+                                                    "agrossilvipastoris, bem como aos povos e comunidades tradicionais "
+                                                    "que façam uso coletivo do seu território.", className="page-2b"),
+                                                html.Ul(
+                                                    html.Li("Art. 25. Os proprietários e possuidores rurais "
+                                                            "interessados na adesão ao PRA, e que estejam inscritos "
+                                                            "em programas e/ou políticas públicas do governo estadual, "
+                                                            "relacionadas às ações de preservação, conservação e "
+                                                            "regularização ambiental, bem como ao fomento às atividades "
+                                                            "sustentáveis, terão prioridade no processo de regularização"
+                                                            " ambiental, no âmbito do PRA.")
+                                                )
+
+                                            ],
+                                            className="page-3",
+                                        ),
+                                    ],
+                                    className="fonte",
+                                ),
+                            ],
+                            className="subpage",
+                        )
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 14
     ]
 )
 
