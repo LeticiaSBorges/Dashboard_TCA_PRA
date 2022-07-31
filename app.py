@@ -937,7 +937,7 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.P("Figura 12 - Número de imóveis rurais com TCAs em execução e com licenciamento "
-                                       "do Xingu.", className="page-2b")
+                                       "do Xingu.", className="page-2c")
                             ], className="fonte",
                         ),
                         html.Div(
@@ -1243,7 +1243,6 @@ app.layout = html.Div(
                                     className="fonte",
                                 ),
                             ],
-                            className="subpage",
                         )
                     ],
                     className="subpage",
@@ -1272,7 +1271,6 @@ app.layout = html.Div(
                                                     "executado são imóveis que passaram pelo licenciamento, do total "
                                                     "de TCA executados, 21 são atribuídos aos Núcleos Regionais de "
                                                     "Regularidade Ambiental (NUREs).", className="page-2b"),
-
                                                 html.P(
                                                     "Ressalta-se que a municipalização da análise e validação do CAR, "
                                                     "descentralizou esta política através de capacitação dos municípios "
@@ -1284,8 +1282,7 @@ app.layout = html.Div(
                                                     "promover o acesso a crédito rural e demais programas oficiais de "
                                                     "incentivo à produção, comprovação de que está cumprindo com a "
                                                     "regularização ambiental, e segurança jurídica para a atividade "
-                                                    "produtiva.", className="page-2b"),
-
+                                                    "produtiva.", className="page-2b")
                                             ],
                                             className="page-3",
                                         ),
@@ -1293,7 +1290,6 @@ app.layout = html.Div(
                                     className="fonte",
                                 ),
                             ],
-                            className="subpage",
                         )
                     ],
                     className="subpage",
@@ -1301,7 +1297,54 @@ app.layout = html.Div(
             ],
             className="page",
         ), #Fim Pagina 15
-        
+        # Pagina 16
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.H4("Referências", className="page-2b"),
+                                            html.P(
+                                                "BRASIL. Lei nº 12.651, de 25 de maio de 2012. Dispõe sobre a proteção "
+                                                "da vegetação nativa; altera as Leis nºs 6.938, de 31 de agosto de "
+                                                "1981, 9.393, de 19 de dezembro de 1996, e 11.428, de 22 de dezembro de "
+                                                "2006; revoga as Leis nºs 4.771, de 15 de setembro de 1965, e 7.754, "
+                                                "de 14 de abril de 1989, e a Medida Provisória nº 2.166-67, de 24 de "
+                                                "agosto de 2001; e dá outras providências. DOU de 28/05/2012. "
+                                                "Disponível em: <http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm> "
+                                                "Acesso em 04/04/2022.", className="page-2b"),
+                                            html.P(
+                                                "SEMAS. Secretaria de Estado de Meio Ambiente e Sustentabilidade. "
+                                                "Decreto nº 1.379, de 3 setembro de 2015. Cria o Programa de "
+                                                "Regularização Ambiental dos Imóveis Rurais do Estado do Pará – PRA/PA "
+                                                "e dá outras providências. DOE de 20/03/2015. Disponível em: "
+                                                "<https://www.semas.pa.gov.br/legislacao/normas/view/6673> " 
+                                                "Acesso em 04/04/2022.", className="page-2c"),
+                                            html.P(
+                                                "SEMAS. Secretaria de Estado de Meio Ambiente e Sustentabilidade. "
+                                                "Instrução normativa nº 01, de 08 de outubro de 2020. Estabelece os "
+                                                "procedimentos e critérios para adesão ao Programa de Regularização "
+                                                "Ambiental do Pará – PRA no âmbito da Secretaria de Estado de Meio "
+                                                "Ambiente e Sustentabilidade - SEMAS e dá outras providências. "
+                                                "DOE 09/10/2020. Disponível em: "
+                                                "<https://www.semas.pa.gov.br/legislacao/publico/view/12702> "
+                                                "Acesso em 04/04/2022.", className="page-2c"),
+                                        ],
+                                        className="page-3",
+                                    ),
+                                ],
+                                className="fonte",
+                            ),
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 16
     ]
 )
 
