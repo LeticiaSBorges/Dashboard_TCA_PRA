@@ -332,6 +332,7 @@ server = app.server
 
 app.layout = html.Div(
     children=[
+        # Pagina 1
         html.Div(
             [
                 html.Div(
@@ -950,6 +951,248 @@ app.layout = html.Div(
             ],
             className="page",
         ),  # Fim pagina 10
+        #Página 11
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.H6("REGIÃO DE INTEGRAÇÃO XINGU", className="page-2b"),
+                                            html.P("O Programa de Regularização da SEMAS/PA é ferramenta de adequação "
+                                                   "de passivos ambientais dos imóveis rurais no Pará, ao aderir ao "
+                                                   "PRA os proprietários ou possuidores de imóveis rurais deverão "
+                                                   "indicar no CAR seus passivos relativos à manutenção obrigatória de "
+                                                   " APP, AUR ou áreas de RL e então assinar o TCA se comprometendo "
+                                                   "a cumprir os termos de recomposição ou recuperação destas áreas "
+                                                   "definidas no PRADA. Neste sentido, o PRA se define como instrumento "
+                                                   "de enfrentamento das irregularidades de imóveis rurais "
+                                                   "viabilizando segurança jurídica e ambiental aos produtores rurais, "
+                                                   "podendo garantir também, a partir da assinatura do TCA, incentivos "
+                                                   "à regularidade de seus imóveis e atividades em que os proprietários "
+                                                   "ou possuidores de imóveis rurais poderão até receber pagamentos "
+                                                   "pelos serviços ambientais prestados.", className="page-2b"),
+                                            html.H6("LEI Nº 12.651, DE 25 DE MAIO DE 2012", className="page-2b"),
+                                            html.Ul(
+                                                [
+                                                    html.Li("Art. 32. São isentos de PMFS:"),
+                                                    html.Ol(
+                                                        [
+                                                        html.Li("O a supressão de florestas e formações sucessoras "
+                                                                "para uso alternativo do solo;"),
+                                                        html.Li("O manejo e a exploração de florestas plantadas "
+                                                                "localizadas fora das Áreas de Preservação Permanente "
+                                                                "e de Reserva Legal;"),
+                                                        html.Li("A exploração florestal não comercial realizada nas "
+                                                                "propriedades rurais a que se refere o inciso V do art."
+                                                                " 3º ou por populações tradicionais."),
+                                                        ]
+                                                    ),
+                                                html.Li("Art. 41 - § 4o As atividades de manutenção das Áreas de "
+                                                        "Preservação Permanente, de Reserva Legal e de uso restrito "
+                                                        "são elegíveis para quaisquer pagamentos ou incentivos por "
+                                                        "serviços ambientais, configurando adicionalidade para fins "
+                                                        "de mercados nacionais e internacionais de reduções de emissões "
+                                                        "certificadas de gases de efeito estufa."),
+                                                html.Li("Art. 41 - § 7o O pagamento ou incentivo a serviços ambientais "
+                                                        "a que se refere deste artigo serão prioritariamente destinados "
+                                                        "aos agricultores familiares como definidos no inciso V do "
+                                                        "art. 3º (pequena prórpiedade ou posse rural) desta Lei."),
+                                                html.Li(" Art. 52. A intervenção e a supressão de vegetação em Áreas "
+                                                        "de Preservação de Reserva Legal para as atividades eventuais "
+                                                        "ou de baixo impacto ambiental, previstas no inciso X do art. "
+                                                        "3º , excetuadas as alíneas b e g, quando desenvolvidas nos "
+                                                        "imóveis a que se refere o inciso V do art. 3º , dependerão de "
+                                                        "simples declaração ao órgão ambiental competente, desde que "
+                                                        "esteja o imóvel devidamente inscrito no CAR.")
+                                                ]
+                                            , className="page-2b"
+                                            )
+
+                                        ],
+                                        className="page-3",
+                                    ),
+                                ],
+                                className="fonte",
+                            ),
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 11
+        #Página 12
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.Ul(
+                                                [
+                                                    html.Li("Art. 56. O licenciamento ambiental de PMFS comercial nos "
+                                                            "imóveis a que se refere o inciso V do art. 3º se "
+                                                            "beneficiará de procedimento simplificado de licenciamento "
+                                                            "ambiental."),
+                                                    html.Li("Art. 58. Assegurado o controle e a fiscalização dos "
+                                                            "órgãos ambientais competentes dos respectivos planos ou "
+                                                            "projetos, assim como as obrigações do detentor do imóvel, "
+                                                            "o poder público poderá instituir programa de apoio técnico "
+                                                            "e incentivos financeiros, podendo incluir medidas "
+                                                            "indutoras e linhas de financiamento para atender, "
+                                                            "prioritariamente, os imóveis a que se refere o inciso V "
+                                                            "do caput do art. 3º."),
+                                                    html.Li("Art. 59 - § 4º No período entre a publicação desta Lei e "
+                                                            "a implantação do PRA em cada Estado e no Distrito Federal, "
+                                                            "bem como após a adesão do interessado ao PRA e enquanto "
+                                                            "estiver sendo cumprido o termo de compromisso, o "
+                                                            "proprietário ou possuidor não poderá ser autuado por "
+                                                            "infrações cometidas antes de 22 de julho de 2008, "
+                                                            "relativas à supressão irregular de vegetação em Áreas de "
+                                                            "Preservação Permanente, de Reserva Legal e de uso restrito."),
+                                                    html.Li("Art. 59 - § 5º A partir da assinatura do termo de "
+                                                            "compromisso, serão suspensas as sanções decorrentes das "
+                                                            "infrações mencionadas no § 4º deste artigo e, cumpridas as "
+                                                            "obrigações estabelecidas no PRA ou no termo de compromisso "
+                                                            "para a regularização ambiental das exigências desta Lei, "
+                                                            "nos prazos e condições neles estabelecidos, as multas "
+                                                            "referidas neste artigo serão consideradas como convertidas "
+                                                            "em serviços de preservação, melhoria e recuperação da "
+                                                            "qualidade do meio ambiente, regularizando o uso de áreas "
+                                                            "rurais consolidadas conforme definido no PRA."),
+                                                    html.Li("Art. 60. A assinatura de termo de compromisso para "
+                                                            "regularização de imóvel ou posse rural perante o órgão "
+                                                            "ambiental competente, mencionado no art. 59, suspenderá a "
+                                                            "punibilidade dos crimes previstos nos arts. 38, 39 e 48 da "
+                                                            "Lei nº 9.605, de 12 de fevereiro de 1998,  enquanto o "
+                                                            "termo estiver sendo cumprido."),
+                                                    html.Li("Art. 78-A. Após 31 de dezembro de 2017, as instituições "
+                                                            "financeiras só concederão crédito agrícola, em qualquer "
+                                                            "de suas modalidades, para proprietários de imóveis rurais "
+                                                            "que estejam  inscritos no CAR.")
+                                                ]
+                                            , className="page-2b"
+                                            ),
+                                            html.H6("DECRETO Nº 1.379, DE 3 SETEMBRO DE 2015", className="page-2b"),
+                                            html.Ul(
+                                                [
+                                                    html.Li("Art. 5. Os imóveis rurais com área de até 4 (quatro) "
+                                                            "módulos fiscais, cuja utilização se enquadre no conceito "
+                                                            "de agricultura familiar estabelecido na Lei Federal nº "
+                                                            "12.651, de 2012, serão apoiados na elaboração do CAR e, "
+                                                            "quando for o caso, nos procedimentos de adesão e "
+                                                            "cumprimento do PRA, pelo Governo do Estado do Pará"),
+
+                                                ]
+                                            , className="page-2b"
+                                            )
+                                        ],
+                                        className="page-3",
+                                    ),
+                                ],
+                                className="fonte",
+                            ),
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 12
+        #Página 13
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Div([html.H5("Relatório dos TCA's Âmbito PRA")], className="page-2a" ), #page-2a
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.Ul(
+                                                [
+                                                    html.Li("Art. 7. É requisito para adesão ao PRA a inscrição "
+                                                            "prévia do imóvel rural no CAR, conforme regulamentação "
+                                                            "própria, com a identificação dos remanescentes de "
+                                                            "vegetação e passivos ambientais nas APP, áreas de RL ou "
+                                                            "de uso restrito, cuja regularização se fará no âmbito "
+                                                            "do PRA."),
+                                                    html.Li("Art. 8. Identificada a existência de passivos "
+                                                            "ambientais, anteriores a 22 de julho de 2008, poderá o "
+                                                            "proprietário ou possuidor do imóvel rural requerer a "
+                                                            "adesão ao PRA, conforme o art. 4o desta norma, mediante a "
+                                                            "declaração das ações que adotará para regularização dessas "
+                                                            "áreas, de acordo com as normas técnicas definidas pelo "
+                                                            "órgão ambiental competente, bem como as disposições "
+                                                            "previstas neste Decreto."),
+                                                    html.Li("Art. 9. Na hipótese do proprietário ou possuidor do "
+                                                            "imóvel rural não declarar voluntariamente a existência de "
+                                                            "todos os passivos ambientais no CAR, será o mesmo "
+                                                            "notificado pelo órgão ambiental competente quando de sua "
+                                                            "análise para que proceda a retificação das informações "
+                                                            "podendo aderir ao PRA, sem prejuízo das penalidades "
+                                                            "cabíveis pela omissão das mesmas."),
+                                                    html.Li("Art. 22. Protocolado em meio físico ou digital o "
+                                                            "pedido de adesão ao PRA/PA, instruído conforme previsto "
+                                                            "nesta norma e enquanto estiver sendo cumprido o termo de "
+                                                            "compromisso ambiental, o proprietário ou possuidor não "
+                                                            "poderá ser autuado por infrações cometidas antes de 22 "
+                                                            "de julho de 2008, relativas à supressão irregular de "
+                                                            "vegetação em APP, áreas de RL e de uso restrito."),
+                                                    html.Li("Art. 24. A assinatura de termo de compromisso para "
+                                                            "regularização de imóvel ou posse rural perante o órgão "
+                                                            "ambiental competente suspenderá a punibilidade dos crimes "
+                                                            "previstos nos arts. 38, 39 e 48 da Lei nº 9.605, de 12 "
+                                                            "de fevereiro de 1998, enquanto o termo estiver sendo "
+                                                            "cumprido."),
+                                                    html.Li("Art. 68. A recomposição das áreas de preservação "
+                                                            "permanente sofrerão procedimento especial simplificado "
+                                                            "para os imóveis rurais com área de até 4 (quatro) módulos "
+                                                            "fiscais, cuja utilização se enquadre no conceito de "
+                                                            "agricultura familiar, definida no inciso X do art. 3º da "
+                                                            "Lei Federal nº 12.651, de 2012 e conforme disposto no "
+                                                            "art. 3º da Lei Federal nº 11.326, de 24 de julho de 2006."),
+                                                ]
+                                            , className="page-2b"
+                                            ),
+                                            html.H6("INSTRUÇÃO NORMATIVA Nº 01, DE 08 DE OUTUBRO DE 2020", className="page-2b"),
+                                            html.Ul(
+                                                [
+                                                    html.Li("Art. 24. Os proprietários e possuidores de imóveis "
+                                                            "rurais com área até 4 (quatro) módulos fiscais, cuja "
+                                                            "utilização se enquadre no conceito de pequena propriedade "
+                                                            "ou posse rural familiar estabelecido na Lei Federal nº "
+                                                            "12.651, de 2012, poderão obter apoio técnico do Poder "
+                                                            "Público Estadual para a recomposição da vegetação "
+                                                            "conforme disposto no parágrafo único do art. 54 da Lei "
+                                                            "nº 12.651, 2012, bem como todos os procedimentos "
+                                                            "aplicáveis ao PRA, incluindo a não obrigatoriedade de "
+                                                            "apresentação de ART."),
+                                                ]
+                                            , className="page-2b"
+                                            ),
+                                            html.P("Parágrafo único. Aplica-se o tratamento disposto no caput deste "
+                                                   "artigo, aos proprietários e possuidores de imóveis rurais com área "
+                                                   "até 4 (quatro) módulos fiscais que desenvolvam atividades "
+                                                   "agrossilvipastoris, bem como aos povos e comunidades tradicionais "
+                                                   "que façam uso coletivo do seu território.", className="page-3")
+                                        ],
+                                        className="page-3",
+                                    ),
+                                ],
+                                className="fonte",
+                            ),
+                    ],
+                    className="subpage",
+                )
+            ],
+            className="page",
+        ), #Fim Pagina 13
     ]
 )
 
