@@ -34,15 +34,18 @@ fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 ################################################### Tabela #############################################################
-name_col = ["Região de Integração", 'Área do Imóvel', 'Área a Recompor em RL', 'Área a Recompor em APP']
-table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Dados_TCA.xlsx")
+name_col = ["Região de Integração", 'n° de Imovéis com Licencimento','TCA','Área do Imóvel',
+            'Área a Recompor em RL', 'Área a Recompor em APP']
+table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\"
+                         "Geral\\tab_dinamica_TCA.xlsx")
 table_fig = go.Figure(data=[go.Table(
     header=dict(values=list(name_col),
                 fill_color='#003399',
                 align=['left', 'center'],
                 font=dict(color='white', size=12),
                 height=40),
-    cells=dict(values=[table_df.RegInt, table_df.AreaImovel, table_df.AR_RL, table_df.AR_APP],
+    cells=dict(values=[table_df.RegInt, table_df.n_de_Imoveis_com_Licencimento, table_df.TCA,table_df.AreaImovel,
+                       table_df.AR_RL, table_df.AR_APP],
                fill_color='lavender',
                align=['left', 'center'], font=dict(color='black', size=11))
 )])
@@ -54,7 +57,7 @@ table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', tit
 ## Criação do Gráfico 1
 # Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
 data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
-                             'tab_dinamica_TCA.xlsx')
+                             'tab_dinamica_TCA-2.xlsx')
 
 regInt = data_tab_din['Região de Integração']
 nTCA = data_tab_din['TCA']
@@ -103,7 +106,7 @@ graf_2.update_layout(title_text= "Figura 3 - Imóveis rurais com TCAs em execuç
 ## Criação do Gráfico 3
 #TCAs nas Regiões de Integração no Pará, Brasil
 data_graf_3 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
-                            'tab_dinamica_TCA.xlsx')
+                            'tab_dinamica_TCA-2.xlsx')
 regInt = data_graf_3['Região de Integração']
 nTCA = data_graf_3['TCA']
 
@@ -116,7 +119,7 @@ graf_3.update_layout(#title_text= "Figura 4 - TCAs nas Regiões de Integração 
 ## Criação do Gráfico 4
 #
 data_graf_4 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
-                            'tab_dinamica_TCA.xlsx')
+                            'tab_dinamica_TCA-2.xlsx')
 
 regInt = data_graf_4['Região de Integração']
 nTCA = data_graf_4['TCA']
