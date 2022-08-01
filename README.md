@@ -1,5 +1,5 @@
 # Dashboard dos TCAs do PRA do Estado do Pará
-Este projeto consiste em transforma um relatório produzido por Rodolpho Bastos, Selma Santos, Luiz Cardoso, Bruna Pôjo e Maíra Lopes em um dashboard do tipo relatório pelo software python, no qual o trabalho original foi produzido por meio da ferramenta Excel para análise de dados. 
+Este projeto consiste em transforma um relatório produzido por Rodolpho Bastos, Selma Santos, Luiz Cardoso, Bruna Pôjo e Maíra Lopes em um dashboard do tipo relatório pelo software python, no qual o trabalho original foi produzido por meio da ferramenta Excel para análise de dados. Para visualização do relatório original, clique [aqui](https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/a3574680123c7f9539a94064832133b9849b77e7/Dados/RELAT%C3%93RIO%20TCA_PRA.pdf).
  
 Os dados foram obtidos através da “Entrada única” inseridas no “Módulo Relatório”, pertencentes no sistema da SEMAS/PA, contendo todos os recibos eletrônicos dos imóveis rurais com Cadastros Ambientais Rurais (CAR) aprovados e Termos de Compromissos (TCAs) Executados no Pará. E por fim os dados dos TCAs eletrônicos foram obtidos através do CATIS n° 2022033062. No qual, a capitação da base de dados foi realizada pelos autores.
 
