@@ -737,7 +737,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     [
                                                     html.P("Figura 4 - TCAs nas Regiões de Integração no Estado do "
-                                                           "Pará no Brasil.", className="page-2b")
+                                                           "Pará no Brasil.", className="page-2d")
                                                     ], className="fonte",
                                                 ),
                                             ],
@@ -802,7 +802,7 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.P("Figura 6 - Número de imóveis rurais com TCAs em execução e com licenciamento "
-                                       "por município no Baixo Amazonas.", className="page-2b")
+                                       "por município no Baixo Amazonas.", className="page-2d")
                             ], className="fonte",
                         ),
                         html.Div(
@@ -847,7 +847,7 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.P("Figura 8 - Número de imóveis rurais com TCAs em execução e com licenciamento "
-                                       "por município no Rio Capim.", className="page-2b")
+                                       "por município no Rio Capim.", className="page-2d")
                             ], className="fonte",
                         ),
                         html.Div(
@@ -892,7 +892,7 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.P("Figura 10 - Número de imóveis rurais com TCAs em execução e com licenciamento "
-                                       "do Tapajós.", className="page-2b")
+                                       "do Tapajós.", className="page-2d")
                             ], className="fonte",
                         ),
                         html.Div(
@@ -937,7 +937,7 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.P("Figura 12 - Número de imóveis rurais com TCAs em execução e com licenciamento "
-                                       "do Xingu.", className="page-2c")
+                                       "do Xingu.", className="page-2d")
                             ], className="fonte",
                         ),
                         html.Div(
