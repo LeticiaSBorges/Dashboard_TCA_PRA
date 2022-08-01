@@ -7,7 +7,7 @@ Para a criação do relatório em modelo relatório foi realizado no software py
 
 A principal ideal do projeto era reproduzir o relatório o mais simular possivel com o original, contudo algumas alterações foram realizadas, como layout do relatório, cores e modelos dos gráficos. Houve alteração nos dados do momento da criação do relatório original até a elaboração deste, tendo alterado algumas informações, porém mantendo o texto original dos autores.
 
-O projeto final dessa manenira:
+O Resultado final ficou da seguinte forma:
 <p align="center">
   <img src="https://github.com/LeticiaSBorges/Dashboard_TCA_PRA/blob/c552902bc67f668d130f84e57b53255c3298acd7/Img/folha-1.PNG" width="350" title="hover text">
 </p>
