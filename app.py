@@ -10,13 +10,15 @@ import pandas as pd
 import lorem
 import pathlib
 import openpyxl
+import numpy as np
 
+#C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson
 ##################################################### Mapa #############################################################
-with open("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
+with open("C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.geojson",
           encoding='utf-8') as regiao_integracao:dados_geo = json.load(regiao_integracao)
 
-dados_df = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\'
-                         'REGIOES_INTEGRACAO.xlsx')
+#C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.xlsx
+dados_df = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Arquivos_geojson\\REGIOES_INTEGRACAO.xlsx')
 
 ## Color map
 regInt_Color = ['#008080', '#008B8B', '#20B2AA', '#48D1CC', '#40E0D0', '#00CED1',
@@ -34,14 +36,29 @@ fig_map.update_geos(fitbounds="locations", visible=False)
 fig_map.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 ################################################### Tabela #############################################################
-name_col = ["Região de Integração", 'n° de Imovéis com Licencimento','TCA','Área do Imóvel',
-            'Área a Recompor em RL', 'Área a Recompor em APP']
-table_df = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\"
+table_df = pd.read_excel("C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\"
                          "Geral\\tab_dinamica_TCA.xlsx")
+total_n_Lic = np.sum(table_df['n_de_Imoveis_com_Licencimento'])
+total_tca = np.sum(table_df['TCA'])
+total_AreaImovel = round(np.sum(table_df['AreaImovel']),2)
+total_AR_RL = round(np.sum(table_df['AR_RL']),2)
+total_AR_APP = round(np.sum(table_df['AR_APP']),2)
+
+name_col = ["Região de Integração", 'N° de Imovéis com Licencimento','TCA','Área do Imóvel',
+            'Área a Recompor em RL', 'Área a Recompor em APP']
+pd.options.display.float_format = '{:,.2f}'.format
+table_df = pd.read_excel("C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\"
+                         "Geral\\tab_dinamica_TCA.xlsx")
+
+table_df = table_df.append({'RegInt': 'TOTAL','n_de_Imoveis_com_Licencimento': total_n_Lic,
+               'TCA': total_tca, 'AreaImovel': total_AreaImovel,
+               'AR_RL': total_AR_RL, 'AR_APP': total_AR_APP }, ignore_index=True)
+
+table_df = table_df.round({"n_de_Imoveis_com_Licencimento":0, "TCA":0, "AreaImovel":2, "AR_RL":2, "AR_APP":2})
 table_fig = go.Figure(data=[go.Table(
     header=dict(values=list(name_col),
                 fill_color='#003399',
-                align=['left', 'center'],
+                align=['center', 'center'],
                 font=dict(color='white', size=12),
                 height=40),
     cells=dict(values=[table_df.RegInt, table_df.n_de_Imoveis_com_Licencimento, table_df.TCA,table_df.AreaImovel,
@@ -50,13 +67,13 @@ table_fig = go.Figure(data=[go.Table(
                align=['left', 'center'], font=dict(color='black', size=11))
 )])
 table_fig.update_layout(title_text='Tabela 1 - Áreas dos imóveis rurais.', title_x=0.15,
-                        width=620, height=400,
-                        margin={"r":0,"l":117,"b":0, "t":30})
+                        width=720, height=400,
+                        margin={"r":0,"l":0,"b":0, "t":30})
 
 ################################################# Graficos #############################################################
 ## Criação do Gráfico 1
 # Grafico Número de imóveis rurais com TCAs em execução e com licenciamento por região de integração
-data_tab_din = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
+data_tab_din = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                              'tab_dinamica_TCA-2.xlsx')
 
 regInt = data_tab_din['Região de Integração']
@@ -93,7 +110,7 @@ graf_1.update_layout(barmode='group', xaxis_tickangle=-35,
 
 ## Criação do Gráfico 2
 # Exercução dos TCAs por ano.
-data_ano = pd.read_excel("C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\"
+data_ano = pd.read_excel("C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\"
                          "Ano_Termo_Comp_TCA.xlsx")
 data_ano.rename(columns={'Ano_Termo_Compromisso': 'Ano do Termo de Compromisso'}, inplace = True)
 data_ano.rename(columns={0: 'Quantidade'}, inplace = True)
@@ -105,7 +122,7 @@ graf_2.update_layout(title_text= "Figura 3 - Imóveis rurais com TCAs em execuç
 
 ## Criação do Gráfico 3
 #TCAs nas Regiões de Integração no Pará, Brasil
-data_graf_3 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
+data_graf_3 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                             'tab_dinamica_TCA-2.xlsx')
 regInt = data_graf_3['Região de Integração']
 nTCA = data_graf_3['TCA']
@@ -118,27 +135,20 @@ graf_3.update_layout(#title_text= "Figura 4 - TCAs nas Regiões de Integração 
 
 ## Criação do Gráfico 4
 #
-data_graf_4 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
+data_graf_4 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Geral\\'
                             'tab_dinamica_TCA-2.xlsx')
 
 regInt = data_graf_4['Região de Integração']
 nTCA = data_graf_4['TCA']
 nLic = data_graf_4['n° de Imovéis com Licencimento']
 
-graf_4 = go.Figure()
-graf_4.add_trace(go.Bar(
-    x=regInt,
-    y=nTCA,
-    name='TCA',
-    marker_color='#191970'
-))
-graf_4.add_trace(go.Bar(
-    x=regInt,
-    y=nLic,
-    name='Nº de imóveis com licenciamento',
-    marker_color='#363636'
-))
 
+
+
+graf_4 = px.bar(data_graf_4, x=regInt, y=nTCA #, text_auto=True,
+                #title = "Figura 3 - Imóveis rurais com TCAs em execução.",
+                #width=725, height=300
+                )
 graf_4.update_layout(barmode='group', xaxis_tickangle=90,
                     #title = "Figura 5 - Imóveis rurais com TCAs em execução por Região de Integração.",
                     font={'family': 'Arial', 'size': 10, 'color': 'black'},
@@ -146,12 +156,10 @@ graf_4.update_layout(barmode='group', xaxis_tickangle=90,
                     margin={"r": 0, "l": 0, "b": 50, "t": 30},
                     legend=dict(x=0, y=1.0)
                      )
-graf_4.update_traces(textfont_size=8, textangle=1, textposition="outside", cliponaxis=False)
-
 #############################
 ## Graficos Baixo Amazonas
 
-data_graf_5 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
+data_graf_5 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
                      'tab_dinamica_BAmaz.xlsx')
 
 regInt = data_graf_5['MUNICIPIO']
@@ -179,7 +187,7 @@ graf_5.update_layout(barmode='group', xaxis_tickangle=-35,
                     legend=dict(x=0, y=1.0)
                   )
 
-data_graf_6 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
+data_graf_6 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\Baixo_Amazonas\\'
                             'Ano_Termo_Comp_BAmaz.xlsx', engine='openpyxl')
 data_graf_6.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -198,7 +206,7 @@ graf_6.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Rio Capim
-data_graf_7 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\tab_dinamica_RCapim.xlsx')
+data_graf_7 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\tab_dinamica_RCapim.xlsx')
 regInt = data_graf_7['MUNICIPIO']
 nTCA = data_graf_7['TCA']
 nLic = data_graf_7['n° de Imovéis com Licencimento']
@@ -223,7 +231,7 @@ graf_7.update_layout(barmode='group', xaxis_tickangle=-35,
                 margin = {"r": 0, "l": 0, "b": 0, "t": 20},
                 legend = dict(x=0, y=1.0))
 
-data_graf_8 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\'
+data_graf_8 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\RIO_CAPIM\\'
                             'Ano_Termo_Comp_RCapim.xlsx', engine='openpyxl')
 data_graf_8.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -240,7 +248,7 @@ graf_8.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Tapajós
-data_graf_9 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\tab_dinamica_tapajos.xlsx')
+data_graf_9 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\tab_dinamica_tapajos.xlsx')
 regInt = data_graf_9['MUNICIPIO']
 nTCA = data_graf_9['TCA']
 nLic = data_graf_9['n° de Imovéis com Licencimento']
@@ -266,7 +274,7 @@ graf_9.update_layout(barmode='group', xaxis_tickangle=0,
                 legend = dict(x=0, y=1.0))
 
 
-data_graf_10 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\'
+data_graf_10 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\TAPAJÓS\\'
                             'Ano_Termo_Comp_tapajos.xlsx', engine='openpyxl')
 data_graf_10.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -282,7 +290,7 @@ graf_10.update_xaxes(title = "Ano")
 
 #############################
 ## Graficos Xingu
-data_graf_11 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\tab_dinamica_xingu.xlsx')
+data_graf_11 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\tab_dinamica_xingu.xlsx')
 regInt = data_graf_11['MUNICIPIO']
 nTCA = data_graf_11['TCA']
 nLic = data_graf_11['n° de Imovéis com Licencimento']
@@ -308,7 +316,7 @@ graf_11.update_layout(barmode='group', xaxis_tickangle=-35,
                 legend = dict(x=0, y=1.0))
 
 
-data_graf_12 = pd.read_excel('C:\\Users\\letic\\Documents\\GitHub\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\'
+data_graf_12 = pd.read_excel('C:\\Users\\leticia.borges\\Documents\\Dashboard_TCA_PRA\\Dados\\Resultados\\XINGU\\'
                             'Ano_Termo_Comp_xingu.xlsx', engine='openpyxl')
 data_graf_12.set_axis(['Ano do Termo Compromisso', 'Quantitativo de TCA'],
               axis='columns', inplace=True)
@@ -452,7 +460,15 @@ app.layout = html.Div(
                                                     "Regiões de Integração no Pará",
                                                     className="page-1h",
                                                 ),
-                                                html.P(lorem.paragraph() * 2),
+                                                html.P("A partir dos dados obtidos, identificou-se que 364 imóveis "
+                                                       "rurais possuem Termos de Compromisso Ambiental- TCAs em "
+                                                       "execução, correspondendo a uma área total de 744.111,2829 ha, "
+                                                       "nos quais 10.787,3665 ha estão em processo de recomposição, "
+                                                       "conforme metodologia e cronograma descritos nos projetos de "
+                                                       "recomposição de área degradadas e alteradas. Do total de "
+                                                       "áreas a recompor 8.086,7996 ha são de área de Reserva Legal "
+                                                       "(RL) a recompor, e 2.700,5669 ha são de Área de Preservação "
+                                                       "Permanente (APP) a recompor. [...]"),#lorem.paragraph() * 2
                                             ],
                                             className="page-1k",
                                         ),
@@ -462,7 +478,11 @@ app.layout = html.Div(
                                                     "Região de Integração Baixo Amazonas",
                                                     className="page-1h",
                                                 ),
-                                                html.P(lorem.paragraph() ),
+                                                html.P("Na região do Baixo Amazonas, existem 42 imóveis rurais com "
+                                                       "TCAs em execução, representando 11,5% do total de imóveis no "
+                                                       "Estado do Pará, sendo a terceira região de integração com "
+                                                       "maior número de imóveis com TCAs em execução juntamente a "
+                                                       "região do Tapajós, [...]."), #lorem.paragraph()
                                             ],
                                             className="page-1l",
                                         ),
@@ -472,7 +492,11 @@ app.layout = html.Div(
                                                     "Região de Integração Rio Capim",
                                                     className="page-1h",
                                                 ),
-                                                html.P(lorem.paragraph()),
+                                                html.P("Encontra-se na região do Rio Capim, 20,3% dos imóveis rurais "
+                                                       "com TCA em execução, correspondendo os 74 imóveis rurais, "
+                                                       "destes 53 com licenciamento, sendo que a maior quantidade de "
+                                                       "imóveis rurais encontra-se no município de Paragominas, com "
+                                                       "23 imóveis [...]." ),
                                             ],
                                             className="page-1m",
                                         ),
@@ -482,7 +506,10 @@ app.layout = html.Div(
                                                     "Região de Integração Tapajós",
                                                     className="page-1h",
                                                 ),
-                                                html.P(lorem.paragraph() ),
+                                                html.P("Na região do Tapajós, existem também 42 imóveis rurais com "
+                                                       "TCAs em execução, representando 11,5% sendo a terceira região "
+                                                       "de integração com maior número de imóveis com TCAs em execução "
+                                                       "juntamente a Região do Baixo Amazonas, [...]." ),
                                             ],
                                             className="page-1l",
                                         ),
@@ -492,7 +519,11 @@ app.layout = html.Div(
                                                     "Região de Integração Xingu",
                                                     className="page-1h",
                                                 ),
-                                                html.P(lorem.paragraph()),
+                                                html.P("A região do Xingu apresenta o maior número de imóveis com "
+                                                       "TCAs executados, registrando 31,6% do total dos imóveis sendo "
+                                                       "115 imóveis rurais os quais 96 com licenciamento, com o "
+                                                       "munícípio de Uruará registrando o maior número de imóveis - 29 "
+                                                       "imóveis [...]."),
                                             ],
                                             className="page-1m",
                                         ),
@@ -632,8 +663,8 @@ app.layout = html.Div(
                                             "área total de 744.111,2829 ha, nos quais 10.787,3665 ha estão em processo "
                                             "de recomposição, conforme metodologia e cronograma descritos nos projetos "
                                             "de recomposição de área degradadas e alteradas. Do total de áreas a "
-                                            "recompor 8.086,7996 ha são de área de Reserva Legal (RL) a recompor, e "
-                                            "2.700,5669 ha são de Área de Preservação Permanente (APP) a recompor. "
+                                            "recompor 20.060,62 ha são de área de Reserva Legal (RL) a recompor, e "
+                                            "12.264,65 ha são de Área de Preservação Permanente (APP) a recompor. "
                                             "Identificou-se ainda que dos 364 imóveis com TCAs assinados, 280 (77%) "
                                             "possuem processos de licenciamento ambiental formalizados na SEMAS (Tabela 1).",
                                             className="page-2b"),
@@ -683,12 +714,12 @@ app.layout = html.Div(
                                 html.Div(
                                     [
                                         html.P("A região do Xingu registrou, nos anos de 2018, 2019, 2021 e 2022, o maior "
-                                               "número de imóveis com TCA em execução sendo 5, 26, 53 e 14 imóveis, "
+                                               "número de imóveis com TCA em execução sendo 5, 26, 54    e 14 imóveis, "
                                                "respectivamente. Já em 2020, a região com maior número de imóveis com TCA em "
                                                "execução foi a de Rio Capim, com 21 imóveis. No decorrer dos anos houve um "
                                                "aumento de imóveis rurais com TCAs em execução, crescendo de 5 imóveis em 2018 "
-                                               "para 168 em 2021, ressalta-se que no ano de 2022, até o mês de março, houve "
-                                               "registro de 54 imóveis (Figura 3).",
+                                               "para 169 em 2021, ressalta-se que no ano de 2022, até o mês de março, houve "
+                                               "registro de 55 imóveis (Figura 3).",
                                                className="page-2b"),
                                     ],
                                     className="page-3",
@@ -719,7 +750,7 @@ app.layout = html.Div(
                                                "maior quantidade de TCAs executados são: Xingu, Rio Capim, Baixo "
                                                "Amazonas e Tapajós, com 115, 74, 42 e 42 TCAs, respectivamente. As "
                                                "Regiões com menor quantidade de TCAs executados são: Lago do Tucuruí, "
-                                               "Cuamá e Marajó, com 12, 4 e 1 TCAs (Figura 4 e 5).",
+                                               "Guamá e Marajó, com 12, 4 e 1 TCAs (Figura 4 e 5).",
                                                className="page-2b"),
                                     ],
                                     className="page-3",
@@ -835,7 +866,7 @@ app.layout = html.Div(
                                                "licenciamento, sendo que a maior quantidade de imóveis rurais "
                                                "encontra-se no município de Paragominas, com 23 imóveis (Figura 8). "
                                                "O ano de 2021 registrou um grande aumento no número de imóveis com TCAs "
-                                               "executados, e no ano de 2022, até março/2022, já registra-se 12 imóveis "
+                                               "executados, e no ano de 2022, até março/2022, já registra-se 13 imóveis "
                                                "(Figura 9).", className="page-2b"),
                                     ],
                                     className="page-3",
@@ -922,7 +953,7 @@ app.layout = html.Div(
                                         html.H6("REGIÃO DE INTEGRAÇÃO XINGU", className="page-2b"),
                                         html.P("A região do Xingu apresenta o maior número de imóveis com TCAs "
                                                "executados, registrando 31,6% do total dos imóveis sendo 115 imóveis "
-                                               "rurais os quais 96 com licenciamento, com o munícípio de Uruará "
+                                               "rurais os quais 97 com licenciamento, com o munícípio de Uruará "
                                                "registrando o maior número de imóveis - 29 imóveis (Figura 12). "
                                                "No decorrer dos anos, a região também apresentou o maior aumento de "
                                                "imóveis com TCA executados no ano de 2021 (Figura 13).",
@@ -1267,9 +1298,9 @@ app.layout = html.Div(
                                             [
                                                 html.P(
                                                     "O aumento no número de utilizações do instrumento no decorrer dos "
-                                                    "anos, que saltou do total de 5 no ano de 2018 para 168 no ano de "
+                                                    "anos, que saltou do total de 5 no ano de 2018 para 169 no ano de "
                                                     "2021, fazendo o recorte para os meses de janeiro a março de 2018 "
-                                                    "a 2022, registrou-se de 0 em 2018 a 54 em 2022, para os primeiros "
+                                                    "a 2022, registrou-se de 0 em 2018 a 55 em 2022, para os primeiros "
                                                     "meses do ano. Atualmente, 77% dos imóveis rurais com TCA "
                                                     "executado são imóveis que passaram pelo licenciamento, do total "
                                                     "de TCA executados, 21 são atribuídos aos Núcleos Regionais de "
